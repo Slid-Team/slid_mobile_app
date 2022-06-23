@@ -1,19 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Alert, BackHandler, SafeAreaView, StyleSheet} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import SlidWebView from './components/SlidWebView';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen?.hide();
+  }, []);
   return (
     <SafeAreaView style={style.container}>
       <SlidWebView
