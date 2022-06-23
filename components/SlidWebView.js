@@ -3,7 +3,7 @@ import {BackHandler, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 const SlidWebView = ({handleClose}) => {
-  const BASE_URL = 'http://localhost:3000/docs';
+  const BASE_URL = 'https://app.slid.cc/docs';
   const [webview, setWebview] = useState();
   const [goBackable, setGoBackable] = useState(false);
 
@@ -11,7 +11,6 @@ const SlidWebView = ({handleClose}) => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
-        console.log('goBackable', goBackable);
         if (goBackable) webview.goBack();
         else handleClose();
         return true;
