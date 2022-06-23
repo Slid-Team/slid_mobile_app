@@ -18,32 +18,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Lcm-GV-RpF">
-                                <rect key="frame" x="121.66666666666669" y="362.66666666666669" width="170.66666666666663" height="170.66666666666669"/>
+                                <rect key="frame" x="122" y="418" width="170" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="MNq-wc-5T5"/>
+                                    <constraint firstAttribute="height" constant="60" id="c6w-UI-YTq"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slid" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="183" y="531.66666666666663" width="48" height="32.666666666666629"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="100" id="9AN-Ri-Hkw"/>
-                            <constraint firstItem="Lcm-GV-RpF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="A9c-Bz-LFX"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstItem="Lcm-GV-RpF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SKR-T8-rHR"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UF5-42-muG"/>
+                            <constraint firstItem="Lcm-GV-RpF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dbk-GA-yKn"/>
+                            <constraint firstItem="Lcm-GV-RpF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ePd-rg-TPm"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
         </scene>
     </scenes>
     <resources>
-        <image name="SplashIcon" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="SplashIcon" width="56.666667938232422" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

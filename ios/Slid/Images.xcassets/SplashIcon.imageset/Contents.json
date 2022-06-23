@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "128.png",
+      "filename" : "[Logo] Mobile_Splash_Original Size.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "256.png",
+      "filename" : "[Logo] Mobile_Splash_Original Size-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "512.png",
+      "filename" : "[Logo] Mobile_Splash_Original Size-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
