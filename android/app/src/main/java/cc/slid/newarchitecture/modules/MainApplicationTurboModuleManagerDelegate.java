@@ -1,4 +1,4 @@
-package com.slid.newarchitecture.modules;
+package cc.slid.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
