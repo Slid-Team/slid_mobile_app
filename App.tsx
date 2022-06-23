@@ -6,7 +6,9 @@ import SlidWebView from './components/SlidWebView';
 
 const App = () => {
   useEffect(() => {
-    SplashScreen?.hide();
+    setTimeout(() => {
+      SplashScreen?.hide();
+    }, 500);
   }, []);
   return (
     <SafeAreaView style={style.container}>
