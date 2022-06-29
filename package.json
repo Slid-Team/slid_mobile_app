@@ -3,9 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "cd android && ./gradlew clean && cd .. && react-native run-android",
-    "android:bundleRelease": "cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
-    "ios": "react-native run-ios",
+    "android": "ENVFILE=.env react-native run-android --appIdSuffix=dev",
+    "android:dev": "ENVFILE=.env.dev react-native run-android --appIdSuffix=dev",
+    "android:stage": "ENVFILE=.env.stage react-native run-android  --appIdSuffix=test",
+    "android:build:dev": "ENVFILE=.env.dev cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
+    "android:build:stage": "ENVFILE=.env.stage  cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
+    "android:build:production": "ENVFILE=.env.production cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
+    "ios": "react-native run-ios --scheme 'Dev'",
+    "ios:dev": "react-native run-ios --scheme 'Dev'",
+    "ios:stage": "react-native run-ios --scheme 'Stage'",
+    "ios:release": "react-native run-ios --scheme 'Release'",
     "ios:ipad13": "react-native run-ios --simulator=\"iPad Pro (12.9-inch) (5th generation)\"",
     "ios:ipad11": "react-native run-ios --simulator=\"iPad Pro (11-inch) (3rd generation)\"",
     "dev": "react-native start",
@@ -15,6 +22,7 @@
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.68.2",
+    "react-native-config": "^1.4.6",
     "react-native-splash-screen": "^3.3.0",
     "react-native-webview": "^11.22.2"
   },
