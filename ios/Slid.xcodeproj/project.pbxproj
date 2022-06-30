@@ -635,7 +635,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.Slid-stage";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.Slid;
 				PRODUCT_NAME = Slid;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
