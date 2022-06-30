@@ -1,11 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {BackHandler, StyleSheet} from 'react-native';
+import {Alert, BackHandler, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
+import Config from 'react-native-config';
 
 const SlidWebView = ({handleClose}) => {
-  const BASE_URL = 'https://app.slid.cc/docs';
+  const BASE_URL = Config.MY_DOCS_URL
+    ? Config.MY_DOCS_URL
+    : 'https://app.slid.cc/docs';
   const [webview, setWebview] = useState();
   const [goBackable, setGoBackable] = useState(false);
+
+  useEffect(() => {
+    if (Config.ENV && Config.ENV !== 'production') {
+      Alert.alert(`Running on ${Config.ENV}`, Config.MY_DOCS_URL);
+    }
+  }, []);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Alert, BackHandler, SafeAreaView, StyleSheet} from 'react-native';
+import {Alert, BackHandler, SafeAreaView, StyleSheet, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import SlidWebView from './components/SlidWebView';
@@ -11,7 +11,7 @@ const App = () => {
     }, 500);
   }, []);
   return (
-    <SafeAreaView style={style.container}>
+    <View style={style.container}>
       <SlidWebView
         handleClose={() => {
           Alert.alert('앱 종료', '앱을 종료하시겠습니까?', [
@@ -23,7 +23,7 @@ const App = () => {
           ]);
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 const style = StyleSheet.create({
