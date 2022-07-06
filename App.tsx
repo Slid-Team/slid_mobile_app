@@ -14,13 +14,7 @@ const App = () => {
     <View style={style.container}>
       <SlidWebView
         handleClose={() => {
-          Alert.alert('앱 종료', '앱을 종료하시겠습니까?', [
-            {
-              text: '아니오',
-              onPress: () => null,
-            },
-            {text: '예', onPress: () => BackHandler.exitApp()},
-          ]);
+          BackHandler.exitApp();
         }}
       />
     </View>

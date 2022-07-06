@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Alert, BackHandler, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Config from 'react-native-config';
 
 const SlidWebView = ({handleClose}) => {
-  const BASE_URL = Config.MY_DOCS_URL
+  const MY_DOCS_URL = Config.MY_DOCS_URL
     ? Config.MY_DOCS_URL
     : 'https://app.slid.cc/docs';
-  const [webview, setWebview] = useState();
-  const [goBackable, setGoBackable] = useState(false);
+  const HOST = Config.HOST ? Config.HOST : 'https://app.slid.cc/docs';
+  const webviewRef = useRef();
+  const [ableToGoBack, setAbleToGoBack] = useState(false);
 
   useEffect(() => {
     if (Config.ENV && Config.ENV !== 'production') {
@@ -20,28 +21,29 @@ const SlidWebView = ({handleClose}) => {
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       () => {
-        if (goBackable) webview.goBack();
-        else handleClose();
+        if (!ableToGoBack) handleClose();
+        else webviewRef.current?.goBack();
         return true;
       },
     );
     return () => backHandler.remove();
-  }, [goBackable]);
+  }, [ableToGoBack]);
 
   useEffect(() => {
-    if (webview && webview.clearCache) webview.clearCache();
-  }, [webview]);
+    if (webviewRef && webviewRef.clearCache) webviewRef.clearCache();
+  }, [webviewRef]);
+
   return (
     <WebView
       userAgent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Mobile" // Is it right way?
       pullToRefreshEnabled={true}
       startInLoadingState={true}
       allowsBackForwardNavigationGestures={true}
-      source={{uri: BASE_URL}}
+      source={{uri: MY_DOCS_URL}}
       mixedContentMode={'compatibility'}
       originWhitelist={['https://*', 'http://*']}
       overScrollMode={'never'}
-      ref={webview}
+      ref={webviewRef}
       style={styles.container}
       injectedJavaScript={`
         (function() {
@@ -69,9 +71,10 @@ const SlidWebView = ({handleClose}) => {
 
         `}
       onMessage={event => {
-        const url = event.nativeEvent.data;
-        setGoBackable(url !== BASE_URL);
-        console.log('onMessage', event.nativeEvent.data);
+        if (event.nativeEvent.data.includes(HOST)) {
+          const url = event.nativeEvent.data;
+          setAbleToGoBack(url !== MY_DOCS_URL && url !== `${HOST}/sign-in`);
+        }
       }}
     />
   );
