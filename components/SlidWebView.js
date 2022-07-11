@@ -38,9 +38,10 @@ const SlidWebView = ({handleClose}) => {
       userAgent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Mobile" // Is it right way?
       pullToRefreshEnabled={true}
       startInLoadingState={true}
-      allowsBackForwardNavigationGestures={true}
+      allowsInlineMediaPlayback={true}
       source={{uri: MY_DOCS_URL}}
-      mixedContentMode={'compatibility'}
+      allowsBackForwardNavigationGestures={true}
+      mixedContentMode="always"
       originWhitelist={['https://*', 'http://*']}
       overScrollMode={'never'}
       ref={webviewRef}
