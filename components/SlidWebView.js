@@ -35,42 +35,21 @@ const SlidWebView = ({handleClose}) => {
 
   return (
     <WebView
+      style={styles.container}
       userAgent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36 Mobile" // Is it right way?
       pullToRefreshEnabled={true}
       startInLoadingState={true}
       allowsInlineMediaPlayback={true}
       source={{uri: MY_DOCS_URL}}
+      onContentProcessDidTerminate={() => {
+        webviewRef?.current?.reload();
+      }}
       allowsBackForwardNavigationGestures={true}
       mixedContentMode="always"
       originWhitelist={['https://*', 'http://*']}
       overScrollMode={'never'}
       ref={webviewRef}
-      style={styles.container}
-      injectedJavaScript={`
-        (function() {
-            function wrap(fn) {
-            return function wrapper() {
-                var res = fn.apply(this, arguments);
-                window.ReactNativeWebView.postMessage(window.location.href);
-                return res;
-              }
-            }
-            history.pushState = wrap(history.pushState);
-            history.replaceState = wrap(history.replaceState);
-            window.addEventListener('popstate', function() {
-            window.ReactNativeWebView.postMessage(window.location.href);
-            });
-        })();
-        true;
-        // Debug
-        console = new Object();
-        console.log = function(log) {
-          window.ReactNativeWebView.postMessage(log)
-        };
-        console.debug = console.log;
-        console.error = console.log;
-
-        `}
+      injectedJavaScript={``}
       onMessage={event => {
         if (event.nativeEvent.data.includes(HOST)) {
           const url = event.nativeEvent.data;
@@ -82,6 +61,8 @@ const SlidWebView = ({handleClose}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
 });
 export default SlidWebView;
