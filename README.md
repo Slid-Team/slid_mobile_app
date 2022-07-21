@@ -5,15 +5,16 @@
 3. For M1 Mac
 
 ```bash
-# Mac M1 architecture is not directly compatible with Cocoapods. If you encounter issues when installing pods, you can solve it by running:
+# Mac M1 architecture is not directly compatible with Cocoapods.
+# If you encounter issues when installing pods, you can solve it by running:
 
-sudo arch -x86_64 gem install ffi
-arch -x86_64 pod install
+brew install cocoapods
 ```
 
 4. Install dependencies by `yarn`
-5. Run `yarn dev` to run Metro server
-6. Run `yarn ios`
+5. Go inside to ios directory by `cd ios` and run `pod install`.
+6. Come back to root directory by `cd ..` and run `yarn dev` to run Metro server
+7. Run `yarn ios`
 
 ### Run Android
 
