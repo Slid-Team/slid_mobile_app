@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "adbReverse": "adb reverse tcp:3000 tcp:3000",
     "android": "ENVFILE=.env react-native run-android --appIdSuffix=dev",
     "android:dev": "ENVFILE=.env.dev react-native run-android --appIdSuffix=dev",
     "android:stage": "ENVFILE=.env.stage react-native run-android  --appIdSuffix=test",
@@ -26,6 +27,7 @@
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-config": "^1.4.6",
+    "react-native-permissions": "^3.6.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-webview": "11.17.2"
   },
