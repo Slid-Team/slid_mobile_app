@@ -3,12 +3,18 @@ import {Alert, BackHandler, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Config from 'react-native-config';
 
-const SlidWebView = ({handleClose}) => {
+interface Props {
+  handleClose(): void;
+}
+
+const MY_DOCS_URL_PROD = 'https://app.slid.cc/docs';
+
+const SlidWebView = ({handleClose}: Props) => {
   const MY_DOCS_URL = Config.MY_DOCS_URL
     ? Config.MY_DOCS_URL
-    : 'https://app.slid.cc/docs';
-  const HOST = Config.HOST ? Config.HOST : 'https://app.slid.cc/docs';
-  const webviewRef = useRef();
+    : MY_DOCS_URL_PROD;
+  const HOST = Config.HOST ? Config.HOST : MY_DOCS_URL_PROD;
+  const webviewRef = useRef<any>(null);
   const [ableToGoBack, setAbleToGoBack] = useState(false);
 
   useEffect(() => {
@@ -30,8 +36,8 @@ const SlidWebView = ({handleClose}) => {
   }, [ableToGoBack]);
 
   useEffect(() => {
-    if (webviewRef && webviewRef.clearCache) webviewRef.clearCache();
-  }, [webviewRef]);
+    if (webviewRef.current.clearCache) webviewRef.current.clearCache();
+  }, [webviewRef.current]);
 
   return (
     <WebView
