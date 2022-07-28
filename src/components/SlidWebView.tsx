@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Alert, BackHandler, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Config from 'react-native-config';
+import {useTranslation} from 'react-i18next';
 
 interface Props {
   handleClose(): void;
@@ -15,11 +16,15 @@ const SlidWebView = ({handleClose}: Props) => {
     : MY_DOCS_URL_PROD;
   const HOST = Config.HOST ? Config.HOST : MY_DOCS_URL_PROD;
   const webviewRef = useRef<any>(null);
-  const [ableToGoBack, setAbleToGoBack] = useState(false);
+  const [ableToGoBack, setAbleToGoBack] = useState<boolean>(false);
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (Config.ENV && Config.ENV !== 'production') {
-      Alert.alert(`Running on ${Config.ENV}`, Config.MY_DOCS_URL);
+      Alert.alert(
+        t('RunningOn', {ns: 'common', env: Config.ENV}),
+        Config.MY_DOCS_URL,
+      );
     }
   }, []);
 
