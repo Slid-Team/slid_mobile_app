@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Alert, BackHandler, SafeAreaView, StyleSheet, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {PERMISSIONS, request, check, RESULTS} from 'react-native-permissions';
-import SlidWebView from './components/SlidWebView';
+import SlidWebView from './src/components/SlidWebView';
 
 const App = () => {
   useEffect(() => {
